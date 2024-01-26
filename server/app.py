@@ -121,6 +121,7 @@ class RestaurantPizzasResource(Resource):
 
         return pizza_data, 201
     
+
 api.add_resource(RestaurantPizzasResource, '/restaurant_pizzas')
 
 

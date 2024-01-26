@@ -16,6 +16,7 @@ class Restaurant(db.Model, SerializerMixin):
 
 
     pizzas = db.relationship('RestaurantPizza', back_populates='restaurant')
+
    
     @validates('name')
     def validate_name_length(self, key, name):
@@ -36,25 +37,26 @@ class Pizza(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
-    restaurants = db.relationship('RestaurantPizza', back_populates='pizza')  
+    restaurant_pizzas = db.relationship('RestaurantPizza', back_populates='pizza')
+
     
     def __repr__(self):
         return f'<Pizza {self.name}>'
     
 class RestaurantPizza(db.Model, SerializerMixin):
     __tablename__ = 'restaurant_pizzas'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'))
     pizza_id = db.Column(db.Integer, db.ForeignKey('pizzas.id'))
-    name = db.Column(db.String(255))
+    name = db.Column(db.String(255))  
     ingredients = db.Column(db.String(255))
-    price = db.Column(db.Integer)
+    price = db.Column(db.Integer, nullable=False) 
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     restaurant = db.relationship('Restaurant', back_populates='pizzas')
-    pizza = db.relationship('Pizza', back_populates='restaurants')
+    pizza = db.relationship('Pizza', back_populates='restaurant_pizzas')
      
     @validates('price')
     def validate_price(self, key, price):
