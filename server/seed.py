@@ -12,21 +12,81 @@ with app.app_context():
     fake = Faker()
 
 
-    print(" Seeding pizzas...")
+    print("🍕 Seeding pizzas...")
     pizzas = [
         
-        {"name": "Cheese", "ingredients": "Dough, Tomato Sauce, Cheese"},
-        {"name": "Pepperoni", "ingredients": "Dough, Tomato Sauce, Cheese, Pepperoni"},
-        {"name": "Margherita", "ingredients": " Pizza dough, tomato sauce, fresh mozzarella cheese, fresh basil, olive oil"},
-        {"name": "Pepperoni and Mushroom", "ingredients": "Pizza dough, tomato sauce, pepperoni slices, sliced mushrooms, shredded mozzarella cheese"},
-        {"name": "BBQ Chicken", "ingredients": " Pizza dough, BBQ sauce, cooked and shredded chicken, red onion slices, cilantro, shredded mozzarella cheese"},
-        {"name": "Cuero Mopia", "ingredients": "Pizza dough, fahija, cherry tomatoes, black olives, feta cheese, lettuce"},
-        {"name": "Pesto and Sun-Dried Tomato", "ingredients": "Pizza dough, pesto sauce, sun-dried tomatoes, pine nuts, cheddar cheese"},
-        {"name": "Hawaiian", "ingredients": "Pizza dough, tomato sauce, ham slices, pineapple chunks, shredded mozzarella cheese"},
-        {"name": "Caprese", "ingredients": " Pizza dough, fresh tomatoes, fresh mozzarella slices, balsamic glaze, fresh basil"},
-        {"name": "White Pizza", "ingredients": "Pizza dough, ricotta cheese, garlic, sautéed spinach, artichoke hearts, shredded mozzarella cheese"},
-        {"name": "Buffalo Chicken", "ingredients": "Pizza dough, buffalo sauce, cooked and shredded chicken, blue cheese crumbles, celery slices"},
-        {"name": "Meat Lovers'", "ingredients": "Pizza dough, tomato sauce, pepperoni, Italian sausage, bacon, ground beef, shredded mozzarella cheese"}
+        {
+    "name": "Margherita",
+    "ingredients": "Tomato sauce, Mozzarella cheese, Fresh basil"
+  },
+  {
+    "name": "Pepperoni",
+    "ingredients": "Tomato sauce, Mozzarella cheese, Pepperoni slices"
+  },
+  {
+    "name": "Vegetarian",
+    "ingredients": "Tomato sauce, Mozzarella cheese, Bell peppers, Mushrooms, Onions, Olives"
+  },
+  {
+    "name": "Hawaiian",
+    "ingredients": "Tomato sauce, Mozzarella cheese, Ham, Pineapple"
+  },
+  {
+    "name": "Meat Lovers",
+    "ingredients": "Tomato sauce, Mozzarella cheese, Pepperoni, Sausage, Bacon, Ground beef"
+  },
+  {
+    "name": "BBQ Chicken",
+    "ingredients": "Tomato sauce, Mozzarella cheese, BBQ sauce, Grilled chicken, Red onions, Cilantro"
+  },
+  {
+    "name": "Supreme",
+    "ingredients": "Tomato sauce, Mozzarella cheese, Pepperoni, Sausage, Mushrooms, Onions, Bell peppers, Olives"
+  },
+  {
+    "name": "Four Cheese",
+    "ingredients": "Tomato sauce, Mozzarella cheese, Cheddar cheese, Parmesan cheese, Gouda cheese"
+  },
+  {
+    "name": "Mushroom Delight",
+    "ingredients": "Creamy garlic sauce, Mozzarella cheese, Mushrooms, Caramelized onions, Thyme"
+  },
+  {
+    "name": "Spinach and Feta",
+    "ingredients": "Olive oil, Mozzarella cheese, Spinach, Feta cheese, Garlic"
+  },
+  {
+    "name": "Buffalo Chicken",
+    "ingredients": "Buffalo sauce, Mozzarella cheese, Grilled chicken, Red onions, Blue cheese crumbles"
+  },
+  {
+    "name": "Pesto Paradise",
+    "ingredients": "Pesto sauce, Mozzarella cheese, Cherry tomatoes, Pine nuts, Fresh basil"
+  },
+  {
+    "name": "Mexican Fiesta",
+    "ingredients": "Salsa, Mozzarella cheese, Ground beef, Jalapeños, Black beans, Corn, Avocado"
+  },
+  {
+    "name": "White Garlic",
+    "ingredients": "Olive oil, Mozzarella cheese, Garlic, Ricotta cheese, Fresh parsley"
+  },
+  {
+    "name": "BBQ Bacon Ranch",
+    "ingredients": "BBQ sauce, Mozzarella cheese, Bacon, Grilled chicken, Ranch dressing"
+  },
+  {
+    "name": "Greek Delight",
+    "ingredients": "Olive oil, Mozzarella cheese, Kalamata olives, Red onions, Feta cheese, Oregano"
+  },
+  {
+    "name": "Vegan Veggie",
+    "ingredients": "Tomato sauce, Vegan cheese, Bell peppers, Mushrooms, Onions, Zucchini, Spinach"
+  },
+  {
+    "name": "Truffle Mushroom",
+    "ingredients": "Truffle oil, Mozzarella cheese, Mushrooms, Parmesan cheese, Arugula"
+  }
     ]
     for pizza_data in pizzas:
         pizza = Pizza(**pizza_data)
@@ -47,7 +107,7 @@ with app.app_context():
     db.session.add_all(restaurants)
     db.session.commit() 
 
-    print("🦸‍♀️ Adding pizzas to restaurants...")
+    print("🇮🇹 Adding pizzas to restaurants...")
     
     for pizza in Pizza.query.all():
         for _ in range(random.randint(1, 3)):
